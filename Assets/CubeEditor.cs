@@ -22,12 +22,12 @@ public class CubeEditor : MonoBehaviour {
 
     private void SnapToGrid() {
         gridPos = waypoint.GetGridPos();
-        transform.position = new Vector3(gridPos.x, 0f, gridPos.y);
+        transform.position = new Vector3(gridPos.x*gridSize, 0f, gridPos.y*gridSize);
     }
 
     private void UpdateLabel() {
         textMesh = GetComponentInChildren<TextMesh>();
-        string coords = (gridPos.x/gridSize + ", " + gridPos.y/gridSize);
+        string coords = (gridPos.x + ", " + gridPos.y);
         textMesh.text = coords;
         gameObject.name = coords;
     }

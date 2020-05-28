@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
-    [SerializeField] List<Waypoint> path;
     [SerializeField] float waitTime = 1f;
 
     void Start() {
-
+        PathFinder pathfinder = FindObjectOfType<PathFinder>();
+        var path = pathfinder.GetPath();
+        StartCoroutine(Followpath(path));
     }
 
 
-    IEnumerator FollowPath() {
-        print("Starting walk");
+    IEnumerator Followpath(List<Waypoint> path) {
         foreach (Waypoint w in path) {
             transform.position = w.transform.position;
-            print("Visiting: " + w.name);
             yield return new WaitForSeconds(waitTime);
         }
-        print("Ending walk");
     }
 }

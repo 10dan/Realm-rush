@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    [SerializeField] int hp = 10;
+    [SerializeField] int hp = 3;
     private void OnParticleCollision(GameObject other) {
         ProcessHit();
         if(hp <= 0) {
@@ -13,7 +13,6 @@ public class EnemyHit : MonoBehaviour
     }
     void ProcessHit() {
         hp -= 1;
-        print("Hp remaining: " + hp);
     }
 
     void KillEnemy() {

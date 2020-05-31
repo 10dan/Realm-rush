@@ -19,10 +19,14 @@ public class PathFinder : MonoBehaviour {
     };
 
     public List<Waypoint> GetPath() {
-        InitBlocks();
-        BFS();
-        CreatePath();
-        return path;
+        if (path.Count == 0) {
+            InitBlocks();
+            BFS();
+            CreatePath();
+            return path;
+        } else {
+            return path;
+        }
     }
     private void CreatePath() {
         path.Add(endWaypoint);

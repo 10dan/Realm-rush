@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
+    [SerializeField] ParticleSystem hitParticlePrefab;
+    [SerializeField] ParticleSystem onDeathPrefab;
     [SerializeField] int hp = 3;
+
     private void OnParticleCollision(GameObject other) {
         ProcessHit();
         if(hp <= 0) {
@@ -12,10 +15,12 @@ public class EnemyHit : MonoBehaviour
         }
     }
     void ProcessHit() {
+        hitParticlePrefab.Play();
         hp -= 1;
     }
 
     void KillEnemy() {
+        ParticleSystem a = Instantiate(onDeathPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

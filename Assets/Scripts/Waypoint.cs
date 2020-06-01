@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
     public bool isExplored = false;
+    public bool isPlaceable = true;
     public Waypoint from;
     Vector2Int gridPos;
     const int gridSize = 10;
@@ -22,5 +23,15 @@ public class Waypoint : MonoBehaviour {
     public void SetTopColor(Color color) {
         MeshRenderer topMeshRenderer = transform.Find("top").GetComponent<MeshRenderer>();
         topMeshRenderer.material.color = color;
+    }
+
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (isPlaceable) {
+                print(gameObject.name + " is available to place on.");
+            } else {
+                print("You cant place a tower here.");
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ public class LookAtEnemy : MonoBehaviour {
     [SerializeField] Transform obj;
     [SerializeField] float range = 5f;
     [SerializeField] ParticleSystem projectile;
-
+    public Waypoint baseWaypoint;
 
     Transform target;
 

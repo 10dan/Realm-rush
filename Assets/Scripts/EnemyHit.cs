@@ -21,6 +21,9 @@ public class EnemyHit : MonoBehaviour
 
     void KillEnemy() {
         ParticleSystem a = Instantiate(onDeathPrefab, transform.position, Quaternion.identity);
+        a.Play();
+        float aDuration = a.main.duration;
+        Destroy(a.gameObject, aDuration);
         Destroy(gameObject);
     }
 }
